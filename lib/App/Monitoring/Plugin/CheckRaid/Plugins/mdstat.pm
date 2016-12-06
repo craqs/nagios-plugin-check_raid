@@ -167,6 +167,7 @@ sub check {
 		# common status
 		my $size = $this->format_bytes($md{blocks} * 1024);
 		my $personality = $md{personality} ? " $md{personality}" : "";
+		my $active = $md{active};
 		my $s = "$md{dev}($size$personality):";
 
 		# failed disks
@@ -176,7 +177,11 @@ sub check {
 		# same for linear, no $md_status available
 		if ($personality =~ /linear|raid0/) {
 			$s .= "OK";
-
+      	
+		} elsif ($active =~ /inactive/) {
+        	$this->critical;
+        	$s .= "INACTIVE";
+		
 		} elsif ($md{resync_status}) {
 			$this->resync;
 			$s .= "$md{status} ($md{resync_status})";
