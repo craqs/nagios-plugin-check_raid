@@ -1,5 +1,8 @@
 # Nagios/Icinga plugin to check current server's RAID status
 
+Default args: -p aaccli,afacli,arcconf,areca,cciss,cmdtool2,dpt_i2o,gdth,hpacucli,hp_msa,hpssacli,ips,lsraid,lsscsi,lsvg,mdstat,megacli,megaide,megaraid,megarc,metastat,mpt,mvcli,sas2ircu,smartctl,tw_cli
+
+
 This plugin checks all RAID volumes (hardware and software) that can be
 identified.
 
